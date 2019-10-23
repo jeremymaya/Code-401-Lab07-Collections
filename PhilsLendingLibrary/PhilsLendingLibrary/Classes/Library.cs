@@ -21,7 +21,14 @@ namespace PhilsLendingLibrary.Classes
 
         public void Remove()
         {
-
+            if(currentIndex < 0)
+            {
+                currentIndex++;
+                Array.Resize(ref storage, storage.Length + 1);
+            }
+            storage[currentIndex] = default;
+            Array.Resize(ref storage, storage.Length - 1);
+            currentIndex--;
         }
 
         public void Count()
@@ -43,7 +50,7 @@ namespace PhilsLendingLibrary.Classes
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            throw new NotImplementedException();
+            return GetEnumerator();
         }
     }
 }

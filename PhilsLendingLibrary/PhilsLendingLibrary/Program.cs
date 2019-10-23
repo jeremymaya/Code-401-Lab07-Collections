@@ -12,14 +12,34 @@ namespace PhilsLendingLibrary
         Poetry,
         Biography,
         Romance
-    };
+    }
+
     public class Program
     {
         public static Library<Book> Library = new Library<Book>();
 
         static void Main(string[] args)
         {
-            
+            LoadBooks();
+            ViewBooks();
+
+        }
+
+        public static void ViewBooks()
+        {
+            foreach (var book in Library)
+            {
+                Console.WriteLine(book.Title);
+            }
+        }
+
+        public static void LoadBooks()
+        {
+            AddABook("To Kill a Mockingbird", "Harper", "Lee", 296, Genre.Fiction);
+            AddABook("The Diary of a Young Girl", "Anne", "Frank", 283, Genre.NonFiction);
+            AddABook("1001 Books You Must Read Before You Die", "Peter", "Boxall", 960, Genre.Fiction);
+            AddABook("1001 Books You Must Read Before You Die", "Peter", "Boxall", 960, Genre.Fiction);
+            AddABook("1001 Books You Must Read Before You Die", "Peter", "Boxall", 960, Genre.Fiction);
         }
 
         public static void AddABook(string title, string firstName, string lastName, int numberOfPages, Genre genre)
