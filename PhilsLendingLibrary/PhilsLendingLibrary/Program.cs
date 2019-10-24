@@ -15,11 +15,12 @@ namespace PhilsLendingLibrary
     public class Program
     {
         public static Library<Book> Library = new Library<Book>();
+        public static List<Book> BookBag = new List<Book>();
 
         static void Main(string[] args)
         {
             LoadBooks();
-
+ 
             bool displayMenu = true;
             while (displayMenu)
             {
@@ -42,15 +43,17 @@ namespace PhilsLendingLibrary
             {
                 case "1":
                     Console.Clear();
+
                     ViewBooks();
                     Console.WriteLine("");
-                    Console.WriteLine("Press 'Enter' to continue");
+                    Console.Write("Press 'Enter' to continue");
                     Console.ReadLine();
                     return true;
                 case "2":
                     Console.Clear();
+
                     Console.Write("Title: ");
-                    string title = Console.ReadLine();
+                    string titleAdd = Console.ReadLine();
                     Console.Write("First Name of the author: ");
                     string firstName = Console.ReadLine();
                     Console.Write("Last Name of the auhor: ");
@@ -64,7 +67,31 @@ namespace PhilsLendingLibrary
                     Console.WriteLine("5. Romance");
                     string genre = Console.ReadLine();
 
-                    AddABook(title, firstName, lastName, Convert.ToInt32(numberOfPages), (Genre)Convert.ToInt32(genre));
+                    AddABook(titleAdd, firstName, lastName, Convert.ToInt32(numberOfPages), (Genre)Convert.ToInt32(genre));
+                    Console.WriteLine("");
+                    Console.WriteLine("Book was added to the library");
+                    Console.Write("Press 'Enter' to continue");
+                    Console.ReadLine();
+                    return true;
+                case "3":
+                    Console.Clear();
+
+                    Console.Write("Title: ");
+                    string titleBorrow = Console.ReadLine();
+
+                    BorrowBook(titleBorrow);
+                    Console.WriteLine("");
+                    Console.WriteLine("Book was added to Book Bag");
+                    Console.Write("Press 'Enter' to continue");
+                    Console.ReadLine();
+                    return true;
+                case "5":
+                    Console.Clear();
+
+                    ViewBookBag();
+                    Console.WriteLine("");
+                    Console.Write("Press 'Enter' to continue");
+                    Console.ReadLine();
                     return true;
                 /*
                 case "3":
@@ -92,9 +119,10 @@ namespace PhilsLendingLibrary
 
         public static void ViewBooks()
         {
-            foreach (var book in Library)
+            int counter = 1;
+            foreach (var item in Library)
             {
-                Console.WriteLine(book.Title);
+                Console.WriteLine($"{counter++}. {item.Title} - {item.Author.FirstName} {item.Author.LastName}");
             }
         }
 
@@ -122,7 +150,28 @@ namespace PhilsLendingLibrary
             };
             Library.Add(book);
         }
+
+        public static void BorrowBook(string title)
+        {
+            foreach (var item in Library)
+            {
+                if (item.Title == title)
+                {
+                    BookBag.Add(item);
+                }
+            }
+        }
+
+        public static void ViewBookBag()
+        {
+            int counter = 1;
+            foreach (var item in BookBag)
+            {
+                Console.WriteLine($"{counter++}. {item.Title} - {item.Author.FirstName} {item.Author.LastName}");
+            }
+        }
         /*
+        
         static void ReturnBook()
         {
             Dictionary<int, Book> books = new Dictionary<int, Book>();

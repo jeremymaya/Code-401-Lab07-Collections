@@ -7,9 +7,5 @@ namespace PhilsLendingLibrary.Classes
         public Author Author { get; set; }
         public int NumberOfPages { get; set; }
         public Genre Genre { get; set; }
-
-        public Book()
-        {
-        }
     }
 }

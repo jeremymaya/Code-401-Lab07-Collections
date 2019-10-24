@@ -21,23 +21,32 @@ namespace PhilsLendingLibrary.Classes
 
         public void Remove()
         {
-            if(currentIndex < 0)
-            {
-                currentIndex++;
-                Array.Resize(ref storage, storage.Length + 1);
-            }
-            storage[currentIndex] = default;
-            Array.Resize(ref storage, storage.Length - 1);
-            currentIndex--;
+            //for (int i = 0; i < storage.Length; i++)
+            //{
+                
+            //    if(storage[i] == book)
+            //    {
+            //        storage[i] = default;
+            //    }
+            //}
+
+
+            //if(storage[])
+
+            //if(currentIndex < 0)
+            //{
+            //    currentIndex++;
+            //    Array.Resize(ref storage, storage.Length + 1);
+            //}
+            //storage[currentIndex] = default;
+            //Array.Resize(ref storage, storage.Length - 1);
+            //currentIndex--;
         }
 
-        public void Count()
+        public int Count()
         {
-
-        }
-
-        public Library()
-        {
+            int numberOfBooks = storage.Length;
+            return numberOfBooks;
         }
 
         public IEnumerator<T> GetEnumerator()
