@@ -37,4 +37,5 @@ Then select and open ```PhilsLendingLibrary.sln```
 ---
 
 ### Change Log
-1.0: *Lab 07 Started* - 232 Oct 2019 8:55 AM
+1.0: *Lab 07 Competed* - 23 Oct 2019 11:55 PM
+1.0: *Lab 07 Started* - 23 Oct 2019 8:55 AM
