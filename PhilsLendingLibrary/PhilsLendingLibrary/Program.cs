@@ -5,10 +5,8 @@ namespace PhilsLendingLibrary
 {
     public enum Genre
     {
-        Fiction,
-        Novel,
+        Fiction = 1,
         NonFiction,
-        ScienceFiction,
         Poetry,
         Biography,
         Romance
@@ -21,8 +19,75 @@ namespace PhilsLendingLibrary
         static void Main(string[] args)
         {
             LoadBooks();
-            ViewBooks();
 
+            bool displayMenu = true;
+            while (displayMenu)
+            {
+                displayMenu = UserInterface();
+            }
+        }
+
+        public static bool UserInterface()
+        {
+            Console.Clear();
+            Console.WriteLine("1. View all books");
+            Console.WriteLine("2. Add a book");
+            Console.WriteLine("3. Borrow a book");
+            Console.WriteLine("4. Return a book");
+            Console.WriteLine("5. View Book Bag");
+            Console.WriteLine("6. Exit");
+            Console.Write("Choose an option: ");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+                    Console.Clear();
+                    ViewBooks();
+                    Console.WriteLine("");
+                    Console.WriteLine("Press 'Enter' to continue");
+                    Console.ReadLine();
+                    return true;
+                case "2":
+                    Console.Clear();
+                    Console.Write("Title: ");
+                    string title = Console.ReadLine();
+                    Console.Write("First Name of the author: ");
+                    string firstName = Console.ReadLine();
+                    Console.Write("Last Name of the auhor: ");
+                    string lastName = Console.ReadLine();
+                    Console.Write("Number of Pages: ");
+                    string numberOfPages = Console.ReadLine();
+                    Console.WriteLine("1. Fiction");
+                    Console.WriteLine("2. Non-Fiction");
+                    Console.WriteLine("3. Poetry:");
+                    Console.WriteLine("4. Biography");
+                    Console.WriteLine("5. Romance");
+                    string genre = Console.ReadLine();
+
+                    AddABook(title, firstName, lastName, Convert.ToInt32(numberOfPages), (Genre)Convert.ToInt32(genre));
+                    return true;
+                /*
+                case "3":
+                    Console.WriteLine("Enter an amount to deposit.");
+                    string deposit = Console.ReadLine();
+                    try
+                    {
+                        balance = Deposit(balance, Decimal.Parse(deposit));
+                        Console.WriteLine($"Your current balance is ${balance}.");
+                        return true;
+                    }
+                    catch (OverflowException)
+                    {
+                        Console.WriteLine("The deposit amount you entered is too large.");
+                        return true;
+                    }
+                */
+                case "6":
+                    return false;
+                default:
+                    Console.WriteLine("That was an invalid entry.");
+                    return true;
+            }
         }
 
         public static void ViewBooks()
