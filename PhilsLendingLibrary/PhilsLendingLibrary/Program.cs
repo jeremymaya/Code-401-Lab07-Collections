@@ -37,9 +37,9 @@ namespace PhilsLendingLibrary
         {
             AddABook("To Kill a Mockingbird", "Harper", "Lee", 296, Genre.Fiction);
             AddABook("The Diary of a Young Girl", "Anne", "Frank", 283, Genre.NonFiction);
-            AddABook("1001 Books You Must Read Before You Die", "Peter", "Boxall", 960, Genre.Fiction);
-            AddABook("1001 Books You Must Read Before You Die", "Peter", "Boxall", 960, Genre.Fiction);
-            AddABook("1001 Books You Must Read Before You Die", "Peter", "Boxall", 960, Genre.Fiction);
+            AddABook("Steve Jobs", "Walter", "Isaacson", 656, Genre.Biography);
+            AddABook("Odyssey", "Hormer", "", 448, Genre.Poetry);
+            AddABook("Pride and Prejudice", "Jane", "Austen", 401, Genre.Romance);
         }
 
         public static void AddABook(string title, string firstName, string lastName, int numberOfPages, Genre genre)
