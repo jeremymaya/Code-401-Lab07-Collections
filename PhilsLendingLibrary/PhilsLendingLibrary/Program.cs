@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using PhilsLendingLibrary.Classes;
 
 namespace PhilsLendingLibrary
@@ -15,7 +16,7 @@ namespace PhilsLendingLibrary
     public class Program
     {
         public static Library<Book> Library = new Library<Book>();
-        public static List<Book> BookBag = new List<Book>();
+        public static Classes.List<Book> BookBag = new Classes.List<Book>();
 
         static void Main(string[] args)
         {
@@ -76,12 +77,18 @@ namespace PhilsLendingLibrary
                 case "3":
                     Console.Clear();
 
-                    Console.Write("Title: ");
-                    string titleBorrow = Console.ReadLine();
-
-                    BorrowBook(titleBorrow);
+                    BorrowBook();
                     Console.WriteLine("");
                     Console.WriteLine("Book was added to Book Bag");
+                    Console.Write("Press 'Enter' to continue");
+                    Console.ReadLine();
+                    return true;
+                case "4":
+                    Console.Clear();
+
+                    ReturnBook();
+                    Console.WriteLine("");
+                    Console.WriteLine("Book was returned to the library");
                     Console.Write("Press 'Enter' to continue");
                     Console.ReadLine();
                     return true;
@@ -93,22 +100,6 @@ namespace PhilsLendingLibrary
                     Console.Write("Press 'Enter' to continue");
                     Console.ReadLine();
                     return true;
-                /*
-                case "3":
-                    Console.WriteLine("Enter an amount to deposit.");
-                    string deposit = Console.ReadLine();
-                    try
-                    {
-                        balance = Deposit(balance, Decimal.Parse(deposit));
-                        Console.WriteLine($"Your current balance is ${balance}.");
-                        return true;
-                    }
-                    catch (OverflowException)
-                    {
-                        Console.WriteLine("The deposit amount you entered is too large.");
-                        return true;
-                    }
-                */
                 case "6":
                     return false;
                 default:
@@ -151,27 +142,25 @@ namespace PhilsLendingLibrary
             Library.Add(book);
         }
 
-        public static void BorrowBook(string title)
+        public static void BorrowBook()
         {
+            Dictionary<int, Book> books = new Dictionary<int, Book>();
+            Console.WriteLine("Which book would you like to borrow");
+            int counter = 1;
             foreach (var item in Library)
             {
-                if (item.Title == title)
-                {
-                    BookBag.Add(item);
-                }
+                books.Add(counter, item);
+                Console.WriteLine($"{counter++}. {item.Title} - {item.Author.FirstName} {item.Author.LastName}");
+
             }
+
+            string response = Console.ReadLine();
+            int.TryParse(response, out int selection);
+            books.TryGetValue(selection, out Book borrowedBook);
+            Library.Remove(borrowedBook);
+            BookBag.Add(borrowedBook);
         }
 
-        public static void ViewBookBag()
-        {
-            int counter = 1;
-            foreach (var item in BookBag)
-            {
-                Console.WriteLine($"{counter++}. {item.Title} - {item.Author.FirstName} {item.Author.LastName}");
-            }
-        }
-        /*
-        
         static void ReturnBook()
         {
             Dictionary<int, Book> books = new Dictionary<int, Book>();
@@ -190,6 +179,14 @@ namespace PhilsLendingLibrary
             BookBag.Remove(returnedBook);
             Library.Add(returnedBook);
         }
-        */
+
+        public static void ViewBookBag()
+        {
+            int counter = 1;
+            foreach (var item in BookBag)
+            {
+                Console.WriteLine($"{counter++}. {item.Title} - {item.Author.FirstName} {item.Author.LastName}");
+            }
+        }
     }
 }

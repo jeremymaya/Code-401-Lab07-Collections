@@ -19,7 +19,7 @@ namespace PhilsLendingLibrary.Classes
             currentIndex++;
         }
 
-        public void Remove()
+        public void Remove(T book)
         {
             //for (int i = 0; i < storage.Length; i++)
             //{

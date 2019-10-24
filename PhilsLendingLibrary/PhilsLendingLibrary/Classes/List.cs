@@ -19,6 +19,11 @@ namespace PhilsLendingLibrary.Classes
             currentIndex++;
         }
 
+        public void Remove(T book)
+        {
+
+        }
+
         public IEnumerator<T> GetEnumerator()
         {
             for (int i = 0; i < currentIndex; i++)
