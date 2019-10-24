@@ -21,26 +21,31 @@ namespace PhilsLendingLibrary.Classes
 
         public void Remove(T book)
         {
-            //for (int i = 0; i < storage.Length; i++)
-            //{
-                
-            //    if(storage[i] == book)
-            //    {
-            //        storage[i] = default;
-            //    }
-            //}
-
-
-            //if(storage[])
-
-            //if(currentIndex < 0)
-            //{
-            //    currentIndex++;
-            //    Array.Resize(ref storage, storage.Length + 1);
-            //}
-            //storage[currentIndex] = default;
-            //Array.Resize(ref storage, storage.Length - 1);
-            //currentIndex--;
+            if (currentIndex == 0)
+            {
+                Console.WriteLine("No book available");
+            }
+            int index = 0;
+            for (int i = 0; i < storage.Length; i++)
+            {
+                if (storage[i].Equals(book))
+                {
+                    index = i;
+                }
+            }
+            for (int i = 0; i < storage.Length; i++)
+            {
+                if (i < index)
+                {
+                    storage[i] = storage[i];
+                }
+                else if (i > index)
+                {
+                    storage[i - 1] = storage[i];
+                }
+            }
+            Array.Resize(ref storage, storage.Length - 1);
+            currentIndex--;
         }
 
         public int Count()
