@@ -21,9 +21,10 @@ namespace PhilsLendingLibrary.Classes
 
         public void Remove(T book)
         {
-            if (currentIndex == 0)
+            if (storage.Length == 0)
             {
-                Console.WriteLine("No book available");
+                Array.Resize(ref storage, storage.Length + 1);
+                currentIndex = 1;
             }
             int index = 0;
             for (int i = 0; i < storage.Length; i++)

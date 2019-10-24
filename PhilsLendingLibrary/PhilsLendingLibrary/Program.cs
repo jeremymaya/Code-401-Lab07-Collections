@@ -153,7 +153,7 @@ namespace PhilsLendingLibrary
                 Console.WriteLine($"{counter++}. {item.Title} - {item.Author.FirstName} {item.Author.LastName}");
 
             }
-
+            Console.WriteLine("");
             string response = Console.ReadLine();
             int.TryParse(response, out int selection);
             books.TryGetValue(selection, out Book borrowedBook);
@@ -172,7 +172,7 @@ namespace PhilsLendingLibrary
                     Console.WriteLine($"{counter++}. {item.Title} - {item.Author.FirstName} {item.Author.LastName}");
 
                 }
-
+            Console.WriteLine("");
             string response = Console.ReadLine();
             int.TryParse(response, out int selection);
             books.TryGetValue(selection, out Book returnedBook);
