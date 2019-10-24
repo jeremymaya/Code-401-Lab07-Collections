@@ -41,7 +41,7 @@ Then select and open ```PhilsLendingLibrary.sln```
 #### View All Books After Add
 ![Image 4](https://github.com/jeremymaya/Code-401-Lab07-Collections/blob/master/Screenshots/View2.JPG)
 #### Borrow A Book
-![Image 5](https://github.com/jeremymaya/Code-401-Lab07-Collections/blob/master7/Screenshots/Borrow.JPG)
+![Image 5](https://github.com/jeremymaya/Code-401-Lab07-Collections/blob/master/Screenshots/Borrow.JPG)
 #### View All Books After Borrow
 ![Image 6](https://github.com/jeremymaya/Code-401-Lab07-Collections/blob/master/Screenshots/View3.JPG)
 #### View Book Bag
